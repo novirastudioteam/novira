@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-novira-dark text-white overflow-x-hidden;
+  }
+
+  ::selection {
+    @apply bg-novira-purple text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-novira-dark-light;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-novira-purple rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-novira-purple-dark;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-novira-purple via-novira-blue to-novira-green bg-clip-text text-transparent;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-novira-purple via-novira-blue to-novira-green bg-200%;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-novira-dark/80 backdrop-blur-xl border border-white/10;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(155, 93, 229, 0.3), 0 0 40px rgba(155, 93, 229, 0.2), 0 0 60px rgba(155, 93, 229, 0.1);
+  }
+
+  .neon-glow-green {
+    box-shadow: 0 0 20px rgba(0, 255, 135, 0.3), 0 0 40px rgba(0, 255, 135, 0.2), 0 0 60px rgba(0, 255, 135, 0.1);
+  }
+
+  .neon-glow-blue {
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.3), 0 0 40px rgba(0, 245, 212, 0.2), 0 0 60px rgba(0, 245, 212, 0.1);
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+  }
+
+  .btn-primary {
+    @apply bg-novira-purple hover:bg-novira-purple-dark text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 ease-out backdrop-blur-sm border border-white/20 hover:border-white/40;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
