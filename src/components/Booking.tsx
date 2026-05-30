@@ -33,26 +33,28 @@ export default function Booking() {
 
       if (dbError) throw dbError;
 
-      // Send email notification via Edge Function
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          instagram: formData.instagram,
-          business: formData.business,
-          message: formData.message,
-        }),
-      });
+   // Send email via Supabase Edge Function
+console.log("Dati inviati alla Edge Function:", formData);
 
-      if (!response.ok) {
-        console.error('Email notification failed, but booking saved to database');
-      }
+const response = await fetch(
+  `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-booking-email`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      test: "HELLO",
+      name: formData.name,
+      email: formData.email,
+      instagram: formData.instagram,
+      business: formData.business,
+      message: formData.message,
+    }),
+  }
+);
 
+console.log("EDGE RESPONSE:", await response.json());
       setIsSubmitting(false);
       setIsSubmitted(true);
 
